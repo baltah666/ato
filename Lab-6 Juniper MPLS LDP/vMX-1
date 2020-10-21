@@ -1,0 +1,40 @@
+interfaces {
+    ge-0/0/0 {
+        description "link to vMX-2";
+        unit 0 {
+            family inet {
+                address 10.0.11.1/30;
+            }
+            family mpls;
+        }
+    }
+    lo0 {
+        unit 0 {
+            family inet {
+                address 10.0.255.1/32;
+            }
+        }
+    }
+}
+routing-options {
+    router-id 10.0.255.1;
+}
+protocols {
+    mpls {
+        interface ge-0/0/0.0;
+    }
+    ospf {
+        area 0.0.0.0 {
+            interface lo0.0 {
+                passive;
+            }
+            interface ge-0/0/0.0 {
+                interface-type p2p;
+            }
+        }
+    }
+    ldp {
+        interface ge-0/0/0.0;
+        interface lo0.0;
+    }
+}
