@@ -1,0 +1,375 @@
+root@SR1> show configuration | display set
+set version 20190829.221548_builder.r1052644
+set groups base-conf system root-authentication encrypted-password "$6$H9WWhxvt$K3Qi0lVOPHuVi6PxEOgTqUoK6dx5FiLSPDmjtGUSiwm5Q3VKBvmcMsbQvrs0KzoeU.Dl1JnLSiV/MtSVIS268."
+set groups base-conf system login class read-only-local idle-timeout 120
+set groups base-conf system login class read-only-local login-alarms
+set groups base-conf system login class read-only-local login-tip
+set groups base-conf system login class read-only-local permissions view
+set groups base-conf system login class super-user-local idle-timeout 120
+set groups base-conf system login class super-user-local login-alarms
+set groups base-conf system login class super-user-local login-tip
+set groups base-conf system login class super-user-local permissions all
+set groups base-conf system login user admin uid 2000
+set groups base-conf system login user admin class super-user
+set groups base-conf system login user admin authentication encrypted-password "$6$/gbJK9QH$1WxzL0uZMoI.hux5.72/uXYjK4AHKsABfvHroLDgJ0sYfrtbg47k0P34MYkNGDyUZ8QF9edKVjvzrp2ZaoghM1"
+set groups base-conf system login user remote-ro uid 2003
+set groups base-conf system login user remote-ro class read-only-local
+set groups base-conf system login user remote-rw uid 2004
+set groups base-conf system login user remote-rw class super-user-local
+set groups base-conf system login user baltah1 uid 2001
+set groups base-conf system login user baltah1 class super-user
+set groups base-conf system login user baltah1 authentication encrypted-password "$6$/Qhl1Xmx$p67f.MevTnbFDRGeh6IlilG3BPcLQS1CgxHIgx8Iih8QrOSn28aR8Zbo5lurUlXnM9MPWvc182qCabG9VZoks/"
+set groups base-conf system services ssh root-login allow
+set groups base-conf system services ssh protocol-version v2
+set groups base-conf system domain-search localdomain
+set groups base-conf system time-zone Europe/Stockholm
+set groups base-conf system authentication-order tacplus
+set groups base-conf system name-server 192.168.174.184
+set groups base-conf system syslog user * any emergency
+set groups base-conf system syslog host 192.168.174.170 any notice
+set groups base-conf system syslog host 192.168.174.170 authorization any
+set groups base-conf system syslog host 192.168.174.170 interactive-commands any
+set groups base-conf system syslog host 192.168.174.170 match "!(.*LICENSE_SHM_.*|/usr/sbin/sshd.*exited.*status.*255|.*mld6_input.*is not link-local.*|.*LBCM-L2,pfe_bcm_l2_mac_add().*)"
+set groups base-conf system syslog host 192.168.174.170 port 514
+set groups base-conf system syslog host 192.168.174.170 explicit-priority
+set groups base-conf system syslog file processes daemon any
+set groups base-conf system syslog file messages any notice
+set groups base-conf system syslog file messages authorization info
+set groups base-conf system syslog file messages match "!(.*LICENSE_SHM_.*|/usr/sbin/sshd.*exited.*status.*255|.*mld6_input.*is not link-local.*)"
+set groups base-conf system syslog file messages archive size 100k
+set groups base-conf system syslog file messages archive files 5
+set groups base-conf system syslog file auth authorization info
+set groups base-conf system syslog file auth interactive-commands any
+set groups base-conf system syslog file auth archive size 100k
+set groups base-conf system syslog file auth archive files 5
+set groups base-conf system syslog file default-log-messages any info
+set groups base-conf system syslog file default-log-messages match "(requested 'commit' operation)|(requested 'commit synchronize' operation)|(copying configuration to juniper.save)|(commit complete)|ifAdminStatus|(FRU power)|(FRU removal)|(FRU insertion)|(link UP)|transitioned|Transferred|transfer-file|(license add)|(license delete)|(package -X update)|(package -X delete)|(FRU Online)|(FRU Offline)|(plugged in)|(unplugged)|CFMD_CCM_DEFECT| LFMD_3AH | RPD_MPLS_PATH_BFD|(Master Unchanged, Members Changed)|(Master Changed, Members Changed)|(Master Detected, Members Changed)|(vc add)|(vc delete)|(Master detected)|(Master changed)|(Backup detected)|(Backup changed)|(interface vcp-)|(AIS_DATA_AVAILABLE)"
+set groups base-conf system syslog file default-log-messages structured-data
+set groups base-conf system syslog time-format year
+set groups base-conf system syslog time-format millisecond
+set groups base-conf system archival configuration transfer-on-commit
+set groups base-conf system archival configuration archive-sites "ftp://root@192.168.174.170" password "$9$YdoJD3nCuBE/9"
+set groups base-conf system extensions providers juniper
+set groups base-conf system extensions providers chef
+set groups base-conf system ddos-protection global disable-routing-engine
+set groups base-conf system ddos-protection global disable-fpc
+set groups base-conf system ddos-protection global disable-logging
+set groups VPN01638 interfaces ae2 unit 201 description lan_10_136_190_0
+set groups VPN01638 interfaces ae2 unit 201 vlan-id 201
+set groups VPN01638 interfaces ae2 unit 201 family inet address 10.136.190.2/26 vrrp-group 1 virtual-address 10.136.190.1
+set groups VPN01638 interfaces ae2 unit 201 family inet address 10.136.190.2/26 vrrp-group 1 priority 200
+set groups VPN01638 interfaces ae2 unit 201 family inet address 10.136.190.2/26 vrrp-group 1 preempt hold-time 10
+set groups VPN01638 interfaces ae2 unit 201 family inet address 10.136.190.2/26 vrrp-group 1 accept-data
+set groups VPN01638 interfaces ae2 unit 171 description lan_10_137_129_128
+set groups VPN01638 interfaces ae2 unit 171 vlan-id 171
+set groups VPN01638 interfaces ae2 unit 171 family inet address 10.137.129.130/25 vrrp-group 1 virtual-address 10.137.129.129
+set groups VPN01638 interfaces ae2 unit 171 family inet address 10.137.129.130/25 vrrp-group 1 priority 200
+set groups VPN01638 interfaces ae2 unit 171 family inet address 10.137.129.130/25 vrrp-group 1 preempt hold-time 10
+set groups VPN01638 interfaces ae2 unit 171 family inet address 10.137.129.130/25 vrrp-group 1 accept-data
+set groups VPN01638 interfaces ae2 unit 171 family inet6 address 2001:1b74:89:c0c0::2/64
+set groups VPN01638 interfaces ae2 unit 171 family inet6 address 2001:1b74:89:c0c0::3/64 vrrp-inet6-group 1 virtual-inet6-address 2001:1b74:89:c0c0::1
+set groups VPN01638 interfaces ae2 unit 171 family inet6 address 2001:1b74:89:c0c0::3/64 vrrp-inet6-group 1 priority 200
+set groups VPN01638 interfaces ae2 unit 171 family inet6 address 2001:1b74:89:c0c0::3/64 vrrp-inet6-group 1 preempt hold-time 10
+set groups VPN01638 interfaces ae2 unit 171 family inet6 address 2001:1b74:89:c0c0::3/64 vrrp-inet6-group 1 accept-data
+set groups VPN01638 interfaces ae2 unit 203 description lan_10_136_190_128
+set groups VPN01638 interfaces ae2 unit 203 vlan-id 203
+set groups VPN01638 interfaces ae2 unit 203 family inet address 10.136.190.130/26 vrrp-group 1 virtual-address 10.136.190.129
+set groups VPN01638 interfaces ae2 unit 203 family inet address 10.136.190.130/26 vrrp-group 1 priority 200
+set groups VPN01638 interfaces ae2 unit 203 family inet address 10.136.190.130/26 vrrp-group 1 preempt hold-time 10
+set groups VPN01638 interfaces ae2 unit 203 family inet address 10.136.190.130/26 vrrp-group 1 accept-data
+set groups VPN01638 interfaces ae2 unit 205 description lan_10_136_190_192
+set groups VPN01638 interfaces ae2 unit 205 vlan-id 205
+set groups VPN01638 interfaces ae2 unit 205 family inet address 10.136.190.194/26 vrrp-group 1 virtual-address 10.136.190.193
+set groups VPN01638 interfaces ae2 unit 205 family inet address 10.136.190.194/26 vrrp-group 1 priority 200
+set groups VPN01638 interfaces ae2 unit 205 family inet address 10.136.190.194/26 vrrp-group 1 preempt hold-time 10
+set groups VPN01638 interfaces ae2 unit 202 description lan_10_136_190_64
+set groups VPN01638 interfaces ae2 unit 202 vlan-id 202
+set groups VPN01638 interfaces ae2 unit 202 family inet address 10.136.190.66/26 vrrp-group 1 virtual-address 10.136.190.65
+set groups VPN01638 interfaces ae2 unit 202 family inet address 10.136.190.66/26 vrrp-group 1 priority 200
+set groups VPN01638 interfaces ae2 unit 202 family inet address 10.136.190.66/26 vrrp-group 1 preempt hold-time 10
+set groups VPN01638 interfaces ae2 unit 202 family inet address 10.136.190.66/26 vrrp-group 1 accept-data
+set groups VPN01638 interfaces ae2 unit 200 description lan_10_136_208_0
+set groups VPN01638 interfaces ae2 unit 200 vlan-id 200
+set groups VPN01638 interfaces ae2 unit 200 family inet address 10.136.208.2/20 vrrp-group 1 virtual-address 10.136.208.1
+set groups VPN01638 interfaces ae2 unit 200 family inet address 10.136.208.2/20 vrrp-group 1 priority 200
+set groups VPN01638 interfaces ae2 unit 200 family inet address 10.136.208.2/20 vrrp-group 1 preempt hold-time 10
+set groups VPN01638 interfaces ae2 unit 200 family inet address 10.136.208.2/20 vrrp-group 1 accept-data
+set groups VPN01638 interfaces ae2 unit 194 description lan_10_136_44_0
+set groups VPN01638 interfaces ae2 unit 194 vlan-id 194
+set groups VPN01638 interfaces ae2 unit 194 family inet address 10.136.44.2/29 vrrp-group 1 virtual-address 10.136.44.1
+set groups VPN01638 interfaces ae2 unit 194 family inet address 10.136.44.2/29 vrrp-group 1 priority 200
+set groups VPN01638 interfaces ae2 unit 194 family inet address 10.136.44.2/29 vrrp-group 1 preempt hold-time 10
+set groups VPN01638 interfaces ae2 unit 194 family inet address 10.136.44.2/29 vrrp-group 1 accept-data
+set groups VPN01638 interfaces ae2 unit 214 description lan_10_136_44_128
+set groups VPN01638 interfaces ae2 unit 214 vlan-id 214
+set groups VPN01638 interfaces ae2 unit 214 family inet address 10.136.44.130/27 vrrp-group 1 virtual-address 10.136.44.129
+set groups VPN01638 interfaces ae2 unit 214 family inet address 10.136.44.130/27 vrrp-group 1 priority 200
+set groups VPN01638 interfaces ae2 unit 214 family inet address 10.136.44.130/27 vrrp-group 1 preempt hold-time 10
+set groups VPN01638 interfaces ae2 unit 214 family inet address 10.136.44.130/27 vrrp-group 1 accept-data
+set groups VPN01638 interfaces ae2 unit 239 description lan_10_136_44_192
+set groups VPN01638 interfaces ae2 unit 239 vlan-id 239
+set groups VPN01638 interfaces ae2 unit 239 family inet address 10.136.44.194/26 vrrp-group 1 virtual-address 10.136.44.193
+set groups VPN01638 interfaces ae2 unit 239 family inet address 10.136.44.194/26 vrrp-group 1 priority 200
+set groups VPN01638 interfaces ae2 unit 239 family inet address 10.136.44.194/26 vrrp-group 1 preempt hold-time 10
+set groups VPN01638 interfaces ae2 unit 239 family inet address 10.136.44.194/26 vrrp-group 1 accept-data
+set groups VPN01638 interfaces ae2 unit 215 description lan_10_136_44_64
+set groups VPN01638 interfaces ae2 unit 215 vlan-id 215
+set groups VPN01638 interfaces ae2 unit 215 family inet address 10.136.44.66/26 vrrp-group 1 virtual-address 10.136.44.65
+set groups VPN01638 interfaces ae2 unit 215 family inet address 10.136.44.66/26 vrrp-group 1 priority 200
+set groups VPN01638 interfaces ae2 unit 215 family inet address 10.136.44.66/26 vrrp-group 1 preempt hold-time 10
+set groups VPN01638 interfaces ae2 unit 215 family inet address 10.136.44.66/26 vrrp-group 1 accept-data
+set groups VPN01638 interfaces ae2 unit 190 description lan_10_137_118_192
+set groups VPN01638 interfaces ae2 unit 190 vlan-id 190
+set groups VPN01638 interfaces ae2 unit 190 family inet address 10.137.118.194/26 vrrp-group 1 virtual-address 10.137.118.193
+set groups VPN01638 interfaces ae2 unit 190 family inet address 10.137.118.194/26 vrrp-group 1 priority 200
+set groups VPN01638 interfaces ae2 unit 190 family inet address 10.137.118.194/26 vrrp-group 1 preempt hold-time 10
+set groups VPN01638 interfaces ae2 unit 190 family inet address 10.137.118.194/26 vrrp-group 1 accept-data
+set groups VPN01638 interfaces ae2 unit 185 description lan_10_137_128_0
+set groups VPN01638 interfaces ae2 unit 185 vlan-id 185
+set groups VPN01638 interfaces ae2 unit 185 family inet address 10.137.128.2/24 vrrp-group 1 virtual-address 10.137.128.1
+set groups VPN01638 interfaces ae2 unit 185 family inet address 10.137.128.2/24 vrrp-group 1 priority 200
+set groups VPN01638 interfaces ae2 unit 185 family inet address 10.137.128.2/24 vrrp-group 1 preempt hold-time 10
+set groups VPN01638 interfaces ae2 unit 185 family inet address 10.137.128.2/24 vrrp-group 1 accept-data
+set groups VPN01638 interfaces ae2 unit 184 description lan_10_137_129_0
+set groups VPN01638 interfaces ae2 unit 184 vlan-id 184
+set groups VPN01638 interfaces ae2 unit 184 family inet address 10.137.129.2/25 vrrp-group 1 virtual-address 10.137.129.1
+set groups VPN01638 interfaces ae2 unit 184 family inet address 10.137.129.2/25 vrrp-group 1 priority 200
+set groups VPN01638 interfaces ae2 unit 184 family inet address 10.137.129.2/25 vrrp-group 1 preempt hold-time 10
+set groups VPN01638 interfaces ae2 unit 184 family inet address 10.137.129.2/25 vrrp-group 1 accept-data
+set groups VPN01638 interfaces ae2 unit 170 description lan_10_137_130_0
+set groups VPN01638 interfaces ae2 unit 170 vlan-id 170
+set groups VPN01638 interfaces ae2 unit 170 family inet address 10.137.130.2/24 vrrp-group 1 virtual-address 10.137.130.1
+set groups VPN01638 interfaces ae2 unit 170 family inet address 10.137.130.2/24 vrrp-group 1 priority 200
+set groups VPN01638 interfaces ae2 unit 170 family inet address 10.137.130.2/24 vrrp-group 1 preempt hold-time 10
+set groups VPN01638 interfaces ae2 unit 170 family inet address 10.137.130.2/24 vrrp-group 1 accept-data
+set groups VPN01638 interfaces ae2 unit 172 description lan_10_137_131_0
+set groups VPN01638 interfaces ae2 unit 172 vlan-id 172
+set groups VPN01638 interfaces ae2 unit 172 family inet address 10.137.131.2/24 vrrp-group 1 virtual-address 10.137.131.1
+set groups VPN01638 interfaces ae2 unit 172 family inet address 10.137.131.2/24 vrrp-group 1 priority 200
+set groups VPN01638 interfaces ae2 unit 172 family inet address 10.137.131.2/24 vrrp-group 1 preempt hold-time 10
+set groups VPN01638 interfaces ae2 unit 172 family inet address 10.137.131.2/24 vrrp-group 1 accept-data
+set groups VPN01638 interfaces ae2 unit 173 description lan_10_137_132_0
+set groups VPN01638 interfaces ae2 unit 173 vlan-id 173
+set groups VPN01638 interfaces ae2 unit 173 family inet address 10.137.132.2/25 vrrp-group 1 virtual-address 10.137.132.1
+set groups VPN01638 interfaces ae2 unit 173 family inet address 10.137.132.2/25 vrrp-group 1 priority 200
+set groups VPN01638 interfaces ae2 unit 173 family inet address 10.137.132.2/25 vrrp-group 1 preempt hold-time 10
+set groups VPN01638 interfaces ae2 unit 173 family inet address 10.137.132.2/25 vrrp-group 1 accept-data
+set groups VPN01638 interfaces ae2 unit 189 description lan_10_137_132_224
+set groups VPN01638 interfaces ae2 unit 189 vlan-id 189
+set groups VPN01638 interfaces ae2 unit 189 family inet address 10.137.132.226/27 vrrp-group 1 virtual-address 10.137.132.225
+set groups VPN01638 interfaces ae2 unit 189 family inet address 10.137.132.226/27 vrrp-group 1 priority 200
+set groups VPN01638 interfaces ae2 unit 189 family inet address 10.137.132.226/27 vrrp-group 1 preempt hold-time 10
+set groups VPN01638 interfaces ae2 unit 189 family inet address 10.137.132.226/27 vrrp-group 1 accept-data
+set groups VPN01638 interfaces ae2 unit 192 description lan_10_137_150_0
+set groups VPN01638 interfaces ae2 unit 192 vlan-id 192
+set groups VPN01638 interfaces ae2 unit 192 family inet address 10.137.150.2/23 vrrp-group 1 virtual-address 10.137.150.1
+set groups VPN01638 interfaces ae2 unit 192 family inet address 10.137.150.2/23 vrrp-group 1 priority 200
+set groups VPN01638 interfaces ae2 unit 192 family inet address 10.137.150.2/23 vrrp-group 1 preempt hold-time 10
+set groups VPN01638 interfaces ae2 unit 192 family inet address 10.137.150.2/23 vrrp-group 1 accept-data
+set groups VPN01638 interfaces ae1 unit 178 description "Tenant linknet VPN01638 PE17"
+set groups VPN01638 interfaces ae1 unit 178 vlan-id 178
+set groups VPN01638 interfaces ae1 unit 178 family inet address 10.128.254.191/31
+set groups VPN01638 interfaces ae1 unit 178 family inet6 address 2001:1b74:80:f80c::2/64
+set groups VPN01638 policy-options policy-statement VPN01638_IMPORT_1 term T10 from community RT64813.71:1638
+set groups VPN01638 policy-options policy-statement VPN01638_IMPORT_1 term T10 then accept
+set groups VPN01638 policy-options policy-statement VPN01638_EXPORT_1 term T10 from community RT64813.71:1638
+set groups VPN01638 policy-options policy-statement VPN01638_EXPORT_1 term T10 then accept
+set groups VPN01638 policy-options policy-statement VPN01638_EXPORT_1 term EOF then community add RT64813.71:1638
+set groups VPN01638 policy-options policy-statement VPN01638_EXPORT_1 term EOF then accept
+set groups VPN01638 policy-options community RT64813.71:1638 members target:64813.71:1638
+set groups VPN01638 routing-instances VPN01638 instance-type vrf
+set groups VPN01638 routing-instances VPN01638 protocols bgp group EBGP_GRD_64813 type external
+set groups VPN01638 routing-instances VPN01638 protocols bgp group EBGP_GRD_64813 import BGP_IMPORT_DEFAULT
+set groups VPN01638 routing-instances VPN01638 protocols bgp group EBGP_GRD_64813 export BGP_IMPORT_DEFAULT
+set groups VPN01638 routing-instances VPN01638 protocols bgp group EBGP_GRD_64813 peer-as 64813
+set groups VPN01638 routing-instances VPN01638 protocols bgp group EBGP_GRD_64813 local-as 64813.71
+set groups VPN01638 routing-instances VPN01638 protocols bgp group EBGP_GRD_64813 bfd-liveness-detection version automatic
+set groups VPN01638 routing-instances VPN01638 protocols bgp group EBGP_GRD_64813 bfd-liveness-detection minimum-interval 300
+set groups VPN01638 routing-instances VPN01638 protocols bgp group EBGP_GRD_64813 bfd-liveness-detection minimum-receive-interval 300
+set groups VPN01638 routing-instances VPN01638 protocols bgp group EBGP_GRD_64813 bfd-liveness-detection multiplier 3
+set groups VPN01638 routing-instances VPN01638 protocols bgp group EBGP_GRD_64813 neighbor 10.128.254.190 description PE17
+set groups VPN01638 routing-instances VPN01638 protocols bgp group EBGP_GRD_64813 neighbor 10.128.254.190 family inet unicast
+set groups VPN01638 routing-instances VPN01638 protocols bgp group EBGP_GRD_64813 neighbor 2001:1b74:80:f80c::1 description PE17
+set groups VPN01638 routing-instances VPN01638 protocols bgp group EBGP_GRD_64813 neighbor 2001:1b74:80:f80c::1 family inet6 unicast
+set groups VPN01638 routing-instances VPN01638 interface ae2.201
+set groups VPN01638 routing-instances VPN01638 interface ae2.171
+set groups VPN01638 routing-instances VPN01638 interface ae1.178
+set groups VPN01638 routing-instances VPN01638 interface ae2.203
+set groups VPN01638 routing-instances VPN01638 interface ae2.205
+set groups VPN01638 routing-instances VPN01638 interface ae2.202
+set groups VPN01638 routing-instances VPN01638 interface ae2.200
+set groups VPN01638 routing-instances VPN01638 interface ae2.194
+set groups VPN01638 routing-instances VPN01638 interface ae2.214
+set groups VPN01638 routing-instances VPN01638 interface ae2.239
+set groups VPN01638 routing-instances VPN01638 interface ae2.215
+set groups VPN01638 routing-instances VPN01638 interface ae2.190
+set groups VPN01638 routing-instances VPN01638 interface ae2.185
+set groups VPN01638 routing-instances VPN01638 interface ae2.184
+set groups VPN01638 routing-instances VPN01638 interface ae2.170
+set groups VPN01638 routing-instances VPN01638 interface ae2.172
+set groups VPN01638 routing-instances VPN01638 interface ae2.173
+set groups VPN01638 routing-instances VPN01638 interface ae2.189
+set groups VPN01638 routing-instances VPN01638 interface ae2.192
+set groups VPN01638 routing-instances VPN01638 forwarding-options dhcp-relay group SERO-DDI interface ae2.171
+set groups VPN01638 routing-instances VPN01638 route-distinguisher 10.136.94.21:1638
+set groups VPN01638 routing-instances VPN01638 vrf-import VPN01638_IMPORT_1
+set groups VPN01638 routing-instances VPN01638 vrf-export VPN01638_EXPORT_1
+set groups VPN01638 routing-instances VPN01638 vrf-table-label
+set groups VPN01752 interfaces ae1 unit 180 description "Tenant linknet VPN01752 PE17"
+set groups VPN01752 interfaces ae1 unit 180 vlan-id 180
+set groups VPN01752 interfaces ae1 unit 180 family inet address 10.128.254.195/31
+set groups VPN01752 interfaces ae1 unit 180 family inet6 address 2001:1b74:80:f80e::2/64
+set groups VPN01752 interfaces ae2 unit 174 description lan_10_137_133_0
+set groups VPN01752 interfaces ae2 unit 174 vlan-id 174
+set groups VPN01752 interfaces ae2 unit 174 family inet address 10.137.133.2/24 vrrp-group 1 virtual-address 10.137.133.1
+set groups VPN01752 interfaces ae2 unit 174 family inet address 10.137.133.2/24 vrrp-group 1 priority 200
+set groups VPN01752 interfaces ae2 unit 174 family inet address 10.137.133.2/24 vrrp-group 1 preempt hold-time 10
+set groups VPN01752 interfaces ae2 unit 174 family inet address 10.137.133.2/24 vrrp-group 1 accept-data
+set groups VPN01752 policy-options policy-statement VPN01752_IMPORT_1 term T10 from community RT64813.71:1752
+set groups VPN01752 policy-options policy-statement VPN01752_IMPORT_1 term T10 then accept
+set groups VPN01752 policy-options policy-statement VPN01752_EXPORT_1 term T10 from community RT64813.71:1752
+set groups VPN01752 policy-options policy-statement VPN01752_EXPORT_1 term T10 then accept
+set groups VPN01752 policy-options policy-statement VPN01752_EXPORT_1 term EOF then community add RT64813.71:1752
+set groups VPN01752 policy-options policy-statement VPN01752_EXPORT_1 term EOF then accept
+set groups VPN01752 policy-options community RT64813.71:1752 members target:64813.71:1752
+set groups VPN01752 routing-instances VPN01752 instance-type vrf
+set groups VPN01752 routing-instances VPN01752 protocols bgp group EBGP_GRD_64813 type external
+set groups VPN01752 routing-instances VPN01752 protocols bgp group EBGP_GRD_64813 import BGP_IMPORT_DEFAULT
+set groups VPN01752 routing-instances VPN01752 protocols bgp group EBGP_GRD_64813 export BGP_EXPORT_DEFAULT
+set groups VPN01752 routing-instances VPN01752 protocols bgp group EBGP_GRD_64813 peer-as 64813
+set groups VPN01752 routing-instances VPN01752 protocols bgp group EBGP_GRD_64813 local-as 64813.71
+set groups VPN01752 routing-instances VPN01752 protocols bgp group EBGP_GRD_64813 bfd-liveness-detection version automatic
+set groups VPN01752 routing-instances VPN01752 protocols bgp group EBGP_GRD_64813 bfd-liveness-detection minimum-interval 300
+set groups VPN01752 routing-instances VPN01752 protocols bgp group EBGP_GRD_64813 bfd-liveness-detection minimum-receive-interval 300
+set groups VPN01752 routing-instances VPN01752 protocols bgp group EBGP_GRD_64813 bfd-liveness-detection multiplier 3
+set groups VPN01752 routing-instances VPN01752 protocols bgp group EBGP_GRD_64813 neighbor 10.128.254.194 description PE17
+set groups VPN01752 routing-instances VPN01752 protocols bgp group EBGP_GRD_64813 neighbor 10.128.254.194 family inet unicast
+set groups VPN01752 routing-instances VPN01752 protocols bgp group EBGP_GRD_64813 neighbor 2001:1b74:80:f80e::1 description PE17
+set groups VPN01752 routing-instances VPN01752 protocols bgp group EBGP_GRD_64813 neighbor 2001:1b74:80:f80e::1 family inet6 unicast
+set groups VPN01752 routing-instances VPN01752 interface ae1.180
+set groups VPN01752 routing-instances VPN01752 interface ae2.174
+set groups VPN01752 routing-instances VPN01752 route-distinguisher 10.136.94.21:1752
+set groups VPN01752 routing-instances VPN01752 vrf-import VPN01752_IMPORT_1
+set groups VPN01752 routing-instances VPN01752 vrf-export VPN01752_EXPORT_1
+set groups VPN01752 routing-instances VPN01752 vrf-table-label
+set apply-groups base-conf
+set apply-groups VPN01638
+set apply-groups VPN01752
+set system host-name SR1
+set system root-authentication encrypted-password "$6$lFuJwpvT$4dgAyE8pQlvTe62DGtCPt5455PMl4iMMZNRex8qjz6XEAhS/MhEmKYGWo/TaDYyy5dgZISMUlWLUQsy.arA8T1"
+set system domain-name home.loca
+set system arp aging-timer 90
+set system authentication-order tacplus
+set system authentication-order password
+set system tacplus-server 192.168.174.144 port 49
+set system tacplus-server 192.168.174.144 secret "$9$EXVcev8X7Vs2LXik"
+set system tacplus-server 192.168.174.144 timeout 5
+set system tacplus-server 192.168.174.144 single-connection
+set system tacplus-server 192.168.174.144 source-address 192.168.174.176
+set system accounting events login
+set system accounting events change-log
+set system accounting events interactive-commands
+set system accounting destination tacplus server 192.168.174.144 secret "$9$DyimfQFnCp0zFre"
+set system accounting destination tacplus server 192.168.174.144 source-address 192.168.174.176
+set system processes dhcp-service traceoptions file dhcp_logfile
+set system processes dhcp-service traceoptions file size 10m
+set system processes dhcp-service traceoptions level all
+set system processes dhcp-service traceoptions flag packet
+set chassis aggregated-devices ethernet device-count 15
+set chassis network-services enhanced-ip
+set security ssh-known-hosts host 192.168.174.70 ecdsa-sha2-nistp256-key AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBI4zIh7NvsgFPK3nr/tPbAi3qSeT67TkUwZj/kDBVIINPMwkPMun4mHUXduuZojsrLOfZl04mXh5zNd64ximQRw=
+set interfaces ge-0/0/0 description PE17:PARENT_AE1
+set interfaces ge-0/0/0 gigether-options 802.3ad ae1
+set interfaces ge-0/0/1 description SR2-0/0/1:GRD:icp
+set interfaces ge-0/0/1 gigether-options 802.3ad ae0
+set interfaces ge-0/0/2 gigether-options 802.3ad ae2
+set interfaces ge-0/0/7 unit 0 family inet address 192.168.19.1/24
+set interfaces ge-0/0/8 unit 0 family inet address 192.168.19.1/24
+set interfaces ge-0/0/9 unit 0 family inet address 192.168.19.1/24
+set interfaces ae0 description SR2_ae0:GRD:icp
+set interfaces ae0 vlan-tagging
+set interfaces ae0 mtu 9192
+set interfaces ae0 unit 0 description SR2:GRD:icp
+set interfaces ae0 unit 0 vlan-id 100
+set interfaces ae0 unit 0 family inet address 10.136.94.18/31
+set interfaces ae0 unit 0 family iso
+set interfaces ae0 unit 0 family mpls
+set interfaces ae1 description PE17_ae14
+set interfaces ae1 flexible-vlan-tagging
+set interfaces ae1 mtu 9192
+set interfaces ae1 encapsulation flexible-ethernet-services
+set interfaces ae2 vlan-tagging
+set interfaces ae2 mtu 9192
+set interfaces fxp0 unit 0 family inet address 192.168.174.176/24
+set interfaces lo0 unit 0 family inet address 10.136.94.20/32
+set interfaces lo0 unit 0 family iso address 49.0000.0101.3609.4020.00
+set policy-options policy-statement BGP_EXPORT_DEFAULT term T10 from route-filter 0.0.0.0/0 exact
+set policy-options policy-statement BGP_EXPORT_DEFAULT term T10 then reject
+set policy-options policy-statement BGP_EXPORT_DEFAULT term T11 from route-filter ::/0 exact
+set policy-options policy-statement BGP_EXPORT_DEFAULT term T11 then reject
+set policy-options policy-statement BGP_EXPORT_DEFAULT term T100 from protocol bgp
+set policy-options policy-statement BGP_EXPORT_DEFAULT term T100 from as-path eBGP
+set policy-options policy-statement BGP_EXPORT_DEFAULT term T100 then reject
+set policy-options policy-statement BGP_EXPORT_DEFAULT term EOF from protocol direct
+set policy-options policy-statement BGP_EXPORT_DEFAULT term EOF from protocol static
+set policy-options policy-statement BGP_EXPORT_DEFAULT term EOF from protocol bgp
+set policy-options policy-statement BGP_EXPORT_DEFAULT term EOF then accept
+set policy-options policy-statement BGP_EXPORT_GRD_1 term DEFAULT then default-action accept
+set policy-options policy-statement BGP_IMPORT_DEFAULT term EOF then accept
+set policy-options policy-statement LB_EXPORT_GRD_1 then load-balance per-packet
+set policy-options policy-statement LDP_EXPORT_1 term T0 from protocol direct
+set policy-options policy-statement LDP_EXPORT_1 term T0 from route-filter 0.0.0.0/0 prefix-length-range /32-/32
+set policy-options policy-statement LDP_EXPORT_1 term T0 then accept
+set policy-options policy-statement LDP_IMPORT_1 term T0 from route-filter 0.0.0.0/0 upto /31
+set policy-options policy-statement LDP_IMPORT_1 term T0 then reject
+set policy-options as-path eBGP .+
+set routing-options static route 0.0.0.0/0 next-hop 192.168.174.2
+set routing-options forwarding-table export LB_EXPORT_GRD_1
+set routing-options router-id 10.136.94.20
+set routing-options autonomous-system 64813.71
+set protocols isis level 2 wide-metrics-only
+set protocols isis level 1 disable
+set protocols isis interface ae0.0 lsp-interval 100
+set protocols isis interface ae0.0 ldp-synchronization
+set protocols isis interface all disable
+set protocols isis interface lo0.0 passive
+set protocols isis reference-bandwidth 1000g
+set protocols isis lsp-lifetime 65535
+set protocols isis spf-options delay 50
+set protocols isis spf-options rapid-runs 3
+set protocols bgp path-selection always-compare-med
+set protocols bgp group IBGP export BGP_EXPORT_GRD_1
+set protocols bgp group IBGP_64813.71 type internal
+set protocols bgp group IBGP_64813.71 description "GRD MPLS"
+set protocols bgp group IBGP_64813.71 local-address 10.136.94.20
+set protocols bgp group IBGP_64813.71 log-updown
+set protocols bgp group IBGP_64813.71 export BGP_EXPORT_GRD_1
+set protocols bgp group IBGP_64813.71 multipath
+set protocols bgp group IBGP_64813.71 neighbor 10.136.94.21 description SR2
+set protocols bgp group IBGP_64813.71 neighbor 10.136.94.21 family inet-vpn any
+set protocols bgp group IBGP_64813.71 neighbor 10.136.94.21 family inet6-vpn any
+set protocols bgp group IBGP_64813.71 neighbor 10.136.94.21 bfd-liveness-detection version automatic
+set protocols bgp group IBGP_64813.71 neighbor 10.136.94.21 bfd-liveness-detection minimum-interval 1000
+set protocols bgp group IBGP_64813.71 neighbor 10.136.94.21 bfd-liveness-detection minimum-receive-interval 1000
+set protocols bgp group IBGP_64813.71 neighbor 10.136.94.21 bfd-liveness-detection multiplier 3
+set protocols bgp group IBGP_64813.71 neighbor 10.136.94.21 bfd-liveness-detection session-mode multihop
+set protocols ldp track-igp-metric
+set protocols ldp import LDP_IMPORT_1
+set protocols ldp export LDP_EXPORT_1
+set protocols ldp interface ae0.0
+set protocols ldp interface all disable
+set protocols ldp igp-synchronization holddown-interval 30
+set protocols mpls log-updown syslog
+set protocols mpls traffic-engineering bgp-igp-both-ribs
+set protocols mpls icmp-tunneling
+set protocols mpls ipv6-tunneling
+set protocols mpls interface lo0.0
+set protocols mpls interface ae0.0
+set protocols lldp traceoptions file lldp.log
+set protocols lldp traceoptions file size 100m
+set protocols lldp traceoptions flag all
+set protocols lldp port-id-subtype interface-name
+set protocols lldp port-description-type interface-description
+set protocols lldp neighbour-port-info-display port-id
+set protocols lldp interface all
+set protocols lldp-med interface all
