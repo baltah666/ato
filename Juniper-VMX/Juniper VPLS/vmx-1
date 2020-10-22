@@ -1,0 +1,61 @@
+interfaces {
+    ge-0/0/0 {
+        description "link to R-2";
+        unit 0 {
+            family inet {
+                address 10.0.12.1/30;
+            }
+            family mpls;
+        }
+    }
+    ge-0/0/1 {
+        flexible-vlan-tagging;
+        encapsulation flexible-ethernet-services;
+        unit 2 {
+            encapsulation vlan-vpls;
+            vlan-id 2;
+            family vpls;
+        }
+    }
+    lo0 {
+        unit 0 {
+            family inet {
+                address 10.0.255.1/32;
+            }
+        }
+    }
+}
+protocols {
+    mpls {
+        no-cspf;
+        interface ge-0/0/0.0;
+    }
+    ospf {
+        traffic-engineering;
+        area 0.0.0.0 {
+            interface ge-0/0/0.0 {
+                interface-type p2p;
+            }
+            interface lo0.0;
+        }
+    }
+    ldp {
+        interface ge-0/0/0.0;
+        interface lo0.0;
+    }
+}
+routing-instances {
+    VPLS {
+        instance-type vpls;
+        interface ge-0/0/1.2;
+        protocols {
+            vpls {
+                encapsulation-type ethernet-vlan;
+                no-control-word;
+                no-tunnel-services;
+                vpls-id 2;
+                neighbor 10.0.255.2;
+            }
+        }
+    }
+}
